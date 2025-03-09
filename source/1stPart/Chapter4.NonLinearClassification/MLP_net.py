@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 
-#定义激活函数类
+# Define the activation function class
 class Activation_Function(object):
     class sigmoid(object):
         @staticmethod
@@ -36,7 +36,7 @@ class Activation_Function(object):
             z[z > 0] = 1
             return z
 
-#定义损失函数类
+# Define the loss function class
 class cost_Function(object):
     class QuadraticCost(object):
         @staticmethod
@@ -52,7 +52,7 @@ class cost_Function(object):
         def fn(a, y):
             return np.sum(np.nan_to_num(-y * np.log(a) - (1 - y) * np.log(1 - a)))
 
-#定义全连接层,需要切换激活函数，请修改activate为激活函数类中的任一一个，也可自行添加激活函数
+# Define fully connected layer, need to switch activate function, please modify activate to any one of the activate function class, you can also add your own activate function.
 class FullyConnectedLayer(object):
     @staticmethod
     def feedforward(a, w, b, activate=Activation_Function.relu):
@@ -211,8 +211,8 @@ class Network(object):
         layers_bincode, zs, activations = self.feedforward(x)
         # backward pass
         delta = (self.cost).delta(zs[-1], activations[-1], y)
-        # 保存所有delta
-        # 保存所有节点的激活情况和激活值
+        # Save all delta
+        # Save the activation status and activation values of all nodes
         Pl_z.append(delta)
         self.Pz_w.append(activations)
         nabla_b[-1] = delta
@@ -417,7 +417,7 @@ def scatter(p, c, X, y, cm_bright, wb=None, wb_grand=None, cmap='coolwarm'):
         point = ax.scatter(X.flat, tt, c=y, alpha=1, cmap=cm_bright, edgecolors='white', s=20, linewidths=0.5)
         fig.colorbar(st)
         fig.colorbar(point)
-    # 3D绘图加equal会出现问题
+    # There will be problems with 3D drawing plus equal.
     # plt.axis('equal')
     # plt.tight_layout()
     return ax
